@@ -27,7 +27,8 @@
         });
 
         const options = {
-          key: import.meta.env.RAZORPAY_KEY_ID,
+          // key: import.meta.env.RAZORPAY_KEY_ID,
+          key: "rzp_test_iBxQQF9d1tG1ek",
           amount: data.amount,
           currency: data.currency,
           name: "Books",
