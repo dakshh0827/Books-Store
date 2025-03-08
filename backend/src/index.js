@@ -22,7 +22,7 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
-    "https://books-vat8.onrender.com",  
+    "https://books-epo1.onrender.com",  
     "http://localhost:5174"          
 ];
 app.use(cors({
