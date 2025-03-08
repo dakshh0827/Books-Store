@@ -21,12 +21,17 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "http://localhost:5174",
+const allowedOrigins = [
+    "https://books-vat8.onrender.com",  
+    "http://localhost:5174"          
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    methods: "GET,POST,PUT,DELETE",
     credentials: true,
-  })
-);
+}));
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/books", booksRoutes);
