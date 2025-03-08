@@ -6,7 +6,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Navbar from "./components/Navbar";
 import BookDetails from "./components/BookDetails";
 import Cart from "./pages/Cart";
-import Success from "./components/paymentSuccess.jsx";
+import Success from "./components/PaymentSuccess.jsx";
 
 import BuyRentBooks from "./components/BuyRentBooks";
 import BuyBooks from "./components/BuyBooks";
