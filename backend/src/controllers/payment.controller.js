@@ -9,8 +9,10 @@ import mongoose from "mongoose";
 dotenv.config();
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
+  // key_id: process.env.RAZORPAY_KEY_ID,
+  // key_secret: process.env.RAZORPAY_KEY_SECRET,
+  key_id: "rzp_test_iBxQQF9d1tG1ek",
+  key_secret: "hvlQ7LbDHlW1NkgZZri636KQ",
 });
 
 export const createOrder = async (req, res) => {
