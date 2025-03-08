@@ -13,7 +13,7 @@ import BuyBooks from "./components/BuyBooks";
 import RentBooks from "./components/RentBooks";
 import LendSellBooks from "./components/LendSellBooks";
 import BuyRentSoftcopies from "./components/BuyRentSoftcopies";
-import SoftcopyDetails from "./components/softcopyDetails.jsx"; 
+import SoftcopyDetails from "./components/SoftcopyDetails.jsx"; 
 import BooksBought from "./components/BooksBought.jsx";
 import BooksRented from "./components/BooksRented.jsx";
 
