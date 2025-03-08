@@ -90,7 +90,7 @@ const RentBooks = () => {
                         )}
                       </button>
                       <button className="btn btn-primary" onClick={(event) => handleRentClick(event, book)}>
-                        {t('rentFor', { price: book.lendingPrice })}
+                        {t('rentFor')}{book.lendingPrice}
                       </button>
                     </>
                   )}
