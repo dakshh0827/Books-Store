@@ -84,7 +84,7 @@ const BuyBooks = () => {
                     )}
                   </button>
                   <button className="btn btn-primary" onClick={(event) => handleBuyClick(event, book)}>
-                    {t('buyFor', { price: book.sellingPrice })}
+                    {t('buyFor')}{book.sellingPrice}
                   </button>
                 </div>
               </div>
