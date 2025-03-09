@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import { fetchTransactions } from "../store/useBookStore.js";
 import { useTranslation } from "react-i18next";
+import { Loader } from "lucide-react";
 
 const BooksRentedList = ({ userId }) => {
   const { t } = useTranslation();
-  const { booksRented, fetchBooksRented } = fetchTransactions();
+  const { booksRented, fetchBooksRented, isLoadingRented } = fetchTransactions();
 
   useEffect(() => {
     fetchBooksRented(userId);
   }, [userId]);
 
   return (
-    <div className="p-4 mt-16">
+    <div className="p-4 mt-16 relative">
       <h2 className="text-xl font-semibold mb-4">{t("booksRentedTitle")}</h2>
-      {booksRented.length === 0 ? (
+
+      {isLoadingRented ? (
+        <div className="flex items-center justify-center h-40">
+          <Loader className="animate-spin text-blue-500 w-10 h-10" />
+        </div>
+      ) : booksRented.length === 0 ? (
         <p>{t("booksRentedNoBooks")}</p>
       ) : (
         <ol className="list-decimal pl-5">
