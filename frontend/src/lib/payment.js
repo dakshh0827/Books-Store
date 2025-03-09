@@ -1,4 +1,4 @@
-  import axios from "axios";
+import { axiosInstance } from "./axios.js";
 
   export const checkout = {
     handlePayment: async (bookID, sellingPrice, username, email, phone, onSuccess) => {
@@ -22,13 +22,12 @@
           throw new Error("Failed to load Razorpay SDK");
         }
 
-        const { data } = await axios.post(`http://localhost:5001/api/payment/order`, {
+        const { data } = await axiosInstance.post(`/payment/order`, {
           amount: sellingPrice,
         });
 
         const options = {
-          // key: import.meta.env.RAZORPAY_KEY_ID,
-          key: "rzp_test_iBxQQF9d1tG1ek",
+          key: import.meta.env.RAZORPAY_KEY_ID,
           amount: data.amount,
           currency: data.currency,
           name: "Books",
@@ -37,7 +36,7 @@
           handler: async (response) => {
             try {
               console.log("payment verify called");
-              const verify = await axios.post(`http://localhost:5001/api/payment/verify`, response);
+              const verify = await axios.post(`/payment/verify`, response);
               console.log(verify.data);
               console.log("Verification API response:", verify.data);
               if (verify.data.success) {
