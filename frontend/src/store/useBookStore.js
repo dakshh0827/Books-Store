@@ -300,23 +300,29 @@ export const totalTransactions = create((set) => ({
 export const fetchTransactions = create((set) => ({
   booksBought: [],
   booksRented: [],
+  isLoadingBought: false,
+  isLoadingRented: false,
 
   fetchBooksBought: async (userId) => {
+    set({ isLoadingBought: true });
     try {
       const { data } = await axiosInstance.post("/books/transactions/bought");
       set({ booksBought: data });
-      console.log(data);
     } catch (error) {
       console.error("Error fetching bought books:", error);
+    } finally {
+      set({ isLoadingBought: false });
     }
   },
-
   fetchBooksRented: async (userId) => {
+    set({ isLoadingRented: true });
     try {
       const { data } = await axiosInstance.post("/books/transactions/rented");
       set({ booksRented: data });
     } catch (error) {
       console.error("Error fetching rented books:", error);
+    } finally {
+      set({ isLoadingRented: false });
     }
   },
 }));
