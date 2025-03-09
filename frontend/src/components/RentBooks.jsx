@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { getBooksToRent, addToCart } from "../store/useBookStore";
 import { useAuthStore } from "../store/useAuthStore.js";
-import { useTransactionStore } from "../store/useTransactionStore.js";
+import { useTransactionStore } from "../store/useBookStore.js";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { checkout } from "../lib/payment.js";
