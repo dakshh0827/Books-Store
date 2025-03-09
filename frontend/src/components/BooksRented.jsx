@@ -16,10 +16,10 @@ const BooksRentedList = ({ userId }) => {
       {booksRented.length === 0 ? (
         <p>{t("booksRentedNoBooks")}</p>
       ) : (
-        <ol>
-          {booksRented.map((book) => (
+        <ol className="list-decimal pl-5">
+          {booksRented.map((book, index) => (
             <li key={book.id.toString()} className="mb-2 p-2 border-b">
-              <strong>{book.title}</strong>
+              <strong>{index + 1}. {book.title}</strong>
               <br />
               <span>{t("booksRentedAuthor")}: {book.author}</span>
               <br />
