@@ -248,10 +248,13 @@ export const removeAfterTransaction = create((set, get) => ({
 
 export const useTransactionStore = create((set) => ({
   transactions: [],
+  isProcessingPayment: false,
 
   addTransaction: async (userId, bookId, category, amount, source) => {
     try {
-      const type = category === "SELL" ? "BUY" : "RENT"; 
+      set({ isProcessingPayment: true });
+
+      const type = category === "SELL" ? "BUY" : "RENT";
 
       const response = await axiosInstance.post("/payment/transactions/add", {
         userId,
@@ -263,11 +266,12 @@ export const useTransactionStore = create((set) => ({
       if (response.status === 200) {
         set((state) => ({
           transactions: [...state.transactions, { userId, bookId, type, amount, date: new Date() }],
+          isProcessingPayment: false,
         }));
       }
-      
     } catch (error) {
       console.error("Error adding transaction:", error.response?.data || error.message);
+      set({ isProcessingPayment: false });
     }
   },
 }));
