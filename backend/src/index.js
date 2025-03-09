@@ -22,33 +22,13 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 const allowedOrigins = [
-  "http://localhost:5174",  // Local development
-  "https://books-epo1.onrender.com"  // Deployed frontend
+  "http://localhost:5174",
+  "https://books-epo1.onrender.com"
 ];
-
-// CORS Middleware
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: allowedOrigins,
   credentials: true
 }));
-
-// Manually set headers for preflight requests
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
-
 
 app.use("/api/auth", authRoutes);
 app.use("/api/books", booksRoutes);
