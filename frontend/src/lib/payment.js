@@ -22,12 +22,15 @@ import { axiosInstance } from "./axios.js";
           throw new Error("Failed to load Razorpay SDK");
         }
 
+        console.log("creating order");
         const { data } = await axiosInstance.post(`/payment/order`, {
           amount: sellingPrice,
         });
+        console.log("order created: ", data);
 
         const options = {
-          key: import.meta.env.RAZORPAY_KEY_ID,
+          // key: import.meta.env.RAZORPAY_KEY_ID,
+          key: "rzp_test_iBxQQF9d1tG1ek",
           amount: data.amount,
           currency: data.currency,
           name: "Books",
@@ -36,7 +39,7 @@ import { axiosInstance } from "./axios.js";
           handler: async (response) => {
             try {
               console.log("payment verify called");
-              const verify = await axios.post(`/payment/verify`, response);
+              const verify = await axiosInstance.post(`/payment/verify`, response);
               console.log(verify.data);
               console.log("Verification API response:", verify.data);
               if (verify.data.success) {
