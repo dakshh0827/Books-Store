@@ -2,6 +2,8 @@
 
 Books-Store is a platform where users can buy, sell, rent and lend books, and can read books online. Built on MERN stack, it features simple UI design with all the necessary features of an e-commerce app.
 
+Live Link: https://books-epo1.onrender.com
+
 ## ✨ Features
 
 *   **Payment Gateway**: Features razorpay secured payment gateway for book payments.
